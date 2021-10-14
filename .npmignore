@@ -1,0 +1,9 @@
+/node_modules
+/src
+.esbuild.js
+.eslintignore
+.eslintrc.json
+.npmignore
+.prettierrc.json
+tsconfig.json
+yarn.lock
