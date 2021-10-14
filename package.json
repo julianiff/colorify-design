@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Colorify Design system",
   "main": "lib/index.js",
+  "module": "lib/index.js",
+  "type": "module",
   "scripts": {
     "serve": "MODE=dev concurrently \"web-dev-server --open dev/ --node-resolve --watch\" \"npm run watch\" \"tsc --noEmit\"",
     "build": "node .esbuild.js",
@@ -16,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/julianiff/colorify-design.git"
   },
-  "author": "",
+  "author": "Julian Iff",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/julianiff/colorify-design/issues"
