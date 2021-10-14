@@ -4,7 +4,13 @@
   "description": "Colorify Design system",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "MODE=dev concurrently \"web-dev-server --open dev/ --node-resolve --watch\" \"npm run watch\" \"tsc --noEmit\"",
+    "build": "node .esbuild.js",
+    "watch": "node .esbuild.watch.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "analyze": "wca analyze \"src/**/*.ts\" --outFile custom-elements.json",
+    "npm:publish": "npm run build && npm publish",
+    "ci": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
