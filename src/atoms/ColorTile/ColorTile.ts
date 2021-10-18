@@ -3,6 +3,12 @@ import {customElement, property} from 'lit/decorators.js';
 import style from './style.css';
 import {styleMap} from 'lit-html/directives/style-map.js';
 
+export interface ColorModel {
+  id: string;
+  name: string;
+  hex: string;
+}
+
 /**
  * ColorTile Component
  *
@@ -21,16 +27,16 @@ export class ColorTile extends LitElement {
   /**
    * Hex Colorcode
    */
-  @property({reflect: true})
-  public colorCode: string = '966A60';
+  @property()
+  public hex: string = '#966A60';
 
   render() {
     return html`<div
       style=${styleMap({
-        '--colorify__color-tile--background': `#${this.colorCode}`
+        '--colorify__color-tile--background': `${this.hex}`
       })}
     >
-      ${this.name}${this.colorCode}
+      ${this.name}${this.hex}
     </div>`;
   }
 }
