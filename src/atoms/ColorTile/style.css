@@ -1,0 +1,7 @@
+:host {
+  display: inline-block;
+  min-width: 20vw;
+  background-color: var(--colorify__color-tile--background, grey);
+  scroll-snap-align: start;
+  border-radius: 3px;
+}
