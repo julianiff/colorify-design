@@ -3,6 +3,7 @@ import '../../atoms/ColorGradient/ColorGradient';
 import '../../atoms/ColorContainer/ColorContainer';
 import {LitElement, html} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
+import {animate, flyAbove, fadeOut} from '@lit-labs/motion';
 import style from './style.css';
 import {
   transformData,
@@ -63,6 +64,10 @@ export class Colorify extends LitElement {
   private renderColorTiles() {
     return this.colorTiles.map(
       (item) => html`<colorify-color-tile
+        ${animate({
+          in: flyAbove,
+          out: fadeOut
+        })}
         name=${item.name}
         hex=${item.hex}
         colorId=${item.id}
@@ -71,7 +76,7 @@ export class Colorify extends LitElement {
   }
 
   private addNewColor({detail: {entry}}: any) {
-    this.colorTiles = [transformSingleEntry(entry), ...this.colorTiles];
+    this.colorTiles = [...this.colorTiles, transformSingleEntry(entry)];
   }
 
   private async removeColor({detail: {entry}}: any) {
