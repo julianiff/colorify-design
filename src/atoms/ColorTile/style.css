@@ -1,11 +1,14 @@
 :host {
-  min-height: 20rem;
+  min-height: var(--colorify__color-tile--min-height, 20rem);
 }
 div {
-  display: inline-block;
-  min-width: 100%;
-  height: 100%;
   background-color: var(--colorify__color-tile--background, grey);
-  scroll-snap-align: start;
-  border-radius: 3px;
+  min-width: var(--colorify__color-tile--min-width, 100%);
+  height: var(--colorify__color-tile--height, 100%);
+  scroll-snap-align: var(--colorify__color-tile--snap, start);
+  border-radius: var(--colorify__color-tile--border-radius, 3px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

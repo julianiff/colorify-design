@@ -1,3 +1,4 @@
+import '../../atoms/ColorGradient/ColorGradient';
 import '../../atoms/ColorTile/ColorTile';
 import '../../atoms/ColorContainer/ColorContainer';
 import {LitElement, html} from 'lit';
@@ -5,6 +6,7 @@ import {customElement, property, state} from 'lit/decorators.js';
 import style from './style.css';
 import {ColorModel} from '../../atoms/ColorTile/ColorTile';
 import {transformData, transformSingleEntry} from './lib/transform';
+import {ifDefined} from 'lit/directives/if-defined.js';
 
 /**
  * ColorPicker Component
@@ -53,6 +55,10 @@ export class ColorPicker extends LitElement {
 
   private renderColorPicker() {
     return html`
+      <colorify-color-gradient
+        hex=${ifDefined(this.previewColor)}
+      ></colorify-color-gradient>
+
       <input
         type="color"
         id="head"
@@ -61,13 +67,13 @@ export class ColorPicker extends LitElement {
         @input=${(e: any) => (this.previewColor = e.target.value)}
       />
       <label for="head">ColorPicker</label>
-      <div
+      <!-- <div
         style="display: inline-block; width: 50px; height: 50px; background-color: ${this
-          .previewColor}"
+        .previewColor}"
         @click="${() => this.saveNewColor()}"
       >
         add color
-      </div>
+      </div> -->
     `;
   }
 

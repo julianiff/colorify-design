@@ -1,0 +1,13 @@
+:host {
+  --colorify__gradient--height: 10rem;
+  --colorify__color-tile--min-height: var(--colorify__gradient--height);
+  --colorify__color-tile--border-radius: 50%;
+}
+
+.gradient-container {
+  display: grid;
+  grid-template-columns: repeat(3, var(--colorify__color-tile--min-height));
+  max-height: 10rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}

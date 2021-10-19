@@ -1,5 +1,5 @@
 import {LitElement, html} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {customElement, property, state} from 'lit/decorators.js';
 import style from './style.css';
 import {styleMap} from 'lit-html/directives/style-map.js';
 
@@ -31,12 +31,12 @@ export class ColorTile extends LitElement {
   public hex: string = '#966A60';
 
   render() {
-    return html`<div
-      style=${styleMap({
-        '--colorify__color-tile--background': `${this.hex}`
-      })}
-    >
-      ${this.name}${this.hex}
+    const backgroundColor = {
+      '--colorify__color-tile--background': this.hex
+    };
+
+    return html`<div style=${styleMap(backgroundColor)}>
+      ${this.name} - ${this.hex}
     </div>`;
   }
 }
