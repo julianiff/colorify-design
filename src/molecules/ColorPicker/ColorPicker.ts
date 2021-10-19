@@ -38,14 +38,19 @@ export class ColorPicker extends LitElement {
           hex=${ifDefined(this.previewColor)}
         ></colorify-color-gradient>
 
+
+
+        <label for="head">ColorPicker</label>
         <input
           type="color"
           id="head"
           name="ColorPicker"
-          value="#e66465"
+          value="#000000"
           @input=${(e: any) => (this.previewColor = e.target.value)}
         />
-        <label for="head">ColorPicker</label>
+
+
+        
         <!-- <div
         style="display: inline-block; width: 50px; height: 50px; background-color: ${this
           .previewColor}"

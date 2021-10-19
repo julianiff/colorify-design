@@ -1,5 +1,5 @@
-import {LitElement, html} from 'lit';
-import {customElement, property, state} from 'lit/decorators.js';
+import {LitElement, html, nothing} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
 import style from './style.css';
 import {styleMap} from 'lit-html/directives/style-map.js';
 
@@ -36,8 +36,12 @@ export class ColorTile extends LitElement {
     };
 
     return html`<div style=${styleMap(backgroundColor)}>
-      ${this.name} - ${this.hex}
+      ${this.renderName()}${this.hex}
     </div>`;
+  }
+
+  private renderName() {
+    return html` ${!!this.name ? `${this.name} - ` : nothing} `;
   }
 }
 

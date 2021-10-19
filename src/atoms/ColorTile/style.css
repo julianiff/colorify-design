@@ -11,4 +11,12 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-shadow: var(--colorify__color-tile--distance);
+  transition: all 250ms ease-in;
+}
+
+div:hover {
+  transition: all 250ms ease-in;
+  box-shadow: var(--colorify__color-tile-hover--distance);
 }

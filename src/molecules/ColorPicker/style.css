@@ -1,3 +1,12 @@
+:host {
+  --colorify__color-tile--distance: var(
+    --colorify-alias__shadow-distance--close
+  );
+  --colorify__color-tile-hover--distance: var(
+    --colorify-alias__shadow-distance--close
+  );
+}
+
 .color-container {
   max-width: 550px;
 }

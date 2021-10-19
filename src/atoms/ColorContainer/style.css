@@ -1,5 +1,5 @@
 :host {
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(5, 20rem);
@@ -10,4 +10,11 @@
   overflow: scroll;
   scroll-snap-type: both mandatory;
   scroll-padding: 1rem;
+
+  --colorify__color-tile--distance: var(
+    --colorify-alias__shadow-distance--close
+  );
+  --colorify__color-tile-hover--distance: var(
+    --colorify-alias__shadow-distance--mid
+  );
 }
