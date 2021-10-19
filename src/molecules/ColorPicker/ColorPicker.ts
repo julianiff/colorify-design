@@ -40,7 +40,10 @@ export class ColorPicker extends LitElement {
   private renderColorPicker() {
     return html`
       <colorify-stack>
-        <colorify-stack direction="row">
+        <colorify-stack
+          direction="row"
+          style="height: var(--colorify__color-picker--height)"
+        >
           <colorify-color-gradient
             hex=${ifDefined(this.previewColor)}
           ></colorify-color-gradient>
