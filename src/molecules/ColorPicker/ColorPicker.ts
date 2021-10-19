@@ -27,6 +27,12 @@ export class ColorPicker extends LitElement {
   @state()
   private previewColor?: string;
 
+  /**
+   * name from Color Element
+   */
+  @state()
+  private name?: string;
+
   render() {
     return html` ${this.renderColorPicker()} `;
   }
@@ -34,30 +40,29 @@ export class ColorPicker extends LitElement {
   private renderColorPicker() {
     return html`
       <colorify-stack>
-        <colorify-color-gradient
-          hex=${ifDefined(this.previewColor)}
-        ></colorify-color-gradient>
-
-
-
-        <label for="head">ColorPicker</label>
-        <input
-          type="color"
-          id="head"
-          name="ColorPicker"
-          value="#000000"
-          @input=${(e: any) => (this.previewColor = e.target.value)}
-        />
-
-
-        
-        <!-- <div
-        style="display: inline-block; width: 50px; height: 50px; background-color: ${this
-          .previewColor}"
-        @click="${() => this.saveNewColor()}"
-      >
-        add color
-      </div> -->
+        <colorify-stack direction="row">
+          <colorify-color-gradient
+            hex=${ifDefined(this.previewColor)}
+          ></colorify-color-gradient>
+          <input
+            type="color"
+            class="search-color"
+            name="ColorPicker"
+            value="#000000"
+            @input=${(e: any) => (this.previewColor = e.target.value)}
+          />
+          <input
+            type="search"
+            class="search-input"
+            value=${ifDefined(this.name)}
+            @input=${(e: any) => (this.name = e.target.value)}
+          />
+          <input
+            type="submit"
+            value="save"
+            @click="${() => this.saveNewColor()}"
+          />
+        </colorify-stack>
       </colorify-stack>
     `;
   }
@@ -68,11 +73,22 @@ export class ColorPicker extends LitElement {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({name: 'name', hex: this.previewColor})
+      body: JSON.stringify({name: this.name, hex: this.previewColor})
     };
     const url = `http://localhost:3000/color/add`;
 
-    const response = await (await fetch(url, options)).json();
+    const server = await (await fetch(url, options)).json();
+    if (!server.error) {
+      const eventOptions = {
+        detail: {entry: server.response},
+        bubbles: true,
+        composed: true
+      };
+
+      this.dispatchEvent(new CustomEvent('set-new-color', eventOptions));
+    } else {
+      console.error('err');
+    }
 
     // add custom event to propage up
   }

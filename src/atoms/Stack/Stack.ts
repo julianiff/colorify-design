@@ -1,5 +1,5 @@
 import {LitElement, html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 import style from './style.css';
 
 /**
@@ -10,6 +10,9 @@ import style from './style.css';
 @customElement('colorify-stack')
 export class Stack extends LitElement {
   static styles = [style];
+
+  @property({reflect: true})
+  public direction?: string;
 
   render() {
     return html`<slot></slot>`;

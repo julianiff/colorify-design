@@ -14,6 +14,8 @@ div {
 
   box-shadow: var(--colorify__color-tile--distance);
   transition: all 250ms ease-in;
+
+  cursor: var(--colorify__color-tile--cursor, pointer);
 }
 
 div:hover {

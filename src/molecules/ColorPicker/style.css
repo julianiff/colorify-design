@@ -5,8 +5,23 @@
   --colorify__color-tile-hover--distance: var(
     --colorify-alias__shadow-distance--close
   );
+
+  --colorify__color-tile--cursor: auto;
 }
 
 .color-container {
   max-width: 550px;
+}
+
+.search-input {
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-color {
+  border: none;
 }

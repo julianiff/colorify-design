@@ -5,6 +5,14 @@
   align-items: center;
 }
 
-::slotted(*) {
+:host([direction='row']) {
+  flex-direction: row;
+}
+
+:host ::slotted(*) {
   margin-bottom: var(--colorify__stack--gap, var(--colorify__alias--space-md));
+}
+
+:host([direction='row']) ::slotted(*) {
+  margin-right: var(--colorify__stack--gap, var(--colorify__alias--space-md));
 }

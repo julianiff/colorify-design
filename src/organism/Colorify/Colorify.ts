@@ -47,9 +47,14 @@ export class Colorify extends LitElement {
 
   render() {
     return html`
-      <colorify-color-picker></colorify-color-picker>
+      <colorify-color-picker
+        @set-new-color=${(e: any) => this.addNewColor(e)}
+      ></colorify-color-picker>
 
-      <colorify-color-container class="color-container">
+      <colorify-color-container
+        class="color-container"
+        @tile-click-event=${(e: any) => this.removeColor(e)}
+      >
         ${this.renderColorTiles()}
       </colorify-color-container>
     `;
@@ -60,8 +65,22 @@ export class Colorify extends LitElement {
       (item) => html`<colorify-color-tile
         name=${item.name}
         hex=${item.hex}
+        colorId=${item.id}
       ></colorify-color-tile>`
     );
+  }
+
+  private addNewColor({detail: {entry}}: any) {
+    this.colorTiles = [transformSingleEntry(entry), ...this.colorTiles];
+  }
+
+  private async removeColor({detail: {entry}}: any) {
+    const url = `http://localhost:3000/color/${entry.id}/remove`;
+
+    const server = await (await fetch(url)).json();
+    if (!server.error) {
+      this.colorTiles = this.colorTiles.filter((item) => item.id !== entry.id);
+    }
   }
 }
 

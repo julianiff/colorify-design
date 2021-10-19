@@ -22,7 +22,9 @@ export class ColorGradient extends LitElement {
     return html`
       <div class="gradient-container">
         <colorify-color-tile hex=${this.gradiating(+25)}></colorify-color-tile>
+        <colorify-color-tile hex=${this.gradiating(+15)}></colorify-color-tile>
         <colorify-color-tile hex=${this.gradiating(0)}></colorify-color-tile>
+        <colorify-color-tile hex=${this.gradiating(-15)}></colorify-color-tile>
         <colorify-color-tile hex=${this.gradiating(-25)}></colorify-color-tile>
       </div>
     `;
