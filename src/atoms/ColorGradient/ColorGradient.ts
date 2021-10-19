@@ -1,7 +1,7 @@
+import '../../atoms/ColorTile/ColorTile';
 import {LitElement, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import style from './style.css';
-import '../../atoms/ColorTile/ColorTile';
 
 /**
  * ColorTile Component
@@ -21,25 +21,18 @@ export class ColorGradient extends LitElement {
   render() {
     return html`
       <div class="gradient-container">
-        <colorify-color-tile hex=${this.hex}></colorify-color-tile>
-        <colorify-color-tile hex=${this.hex}></colorify-color-tile>
-        <colorify-color-tile hex=${this.hex}></colorify-color-tile>
+        <colorify-color-tile hex=${this.gradiating(+25)}></colorify-color-tile>
+        <colorify-color-tile hex=${this.gradiating(0)}></colorify-color-tile>
+        <colorify-color-tile hex=${this.gradiating(-25)}></colorify-color-tile>
       </div>
     `;
   }
 
-  // private doGradientShade(offset: number) {
-  //   const decimal = parseInt(this.previewColor?.replace('#', '')!, 16) + offset;
-
-  //   let hex = Number(decimal).toString(16);
-  //   return html`
-  //     <div
-  //       style="display: inline-block; width: 50px; height: 50px; background-color: #${hex}"
-  //     >
-  //       gradient shade
-  //     </div>
-  //   `;
-  // }
+  private gradiating(offset: number) {
+    const decimal = parseInt(this.hex?.replace('#', '')!, 16) + offset;
+    const shading = `#${Number(decimal).toString(16)}`;
+    return shading;
+  }
 }
 
 declare global {

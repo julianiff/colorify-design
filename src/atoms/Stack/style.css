@@ -6,5 +6,5 @@
 }
 
 ::slotted(*) {
-  margin-bottom: var(--colorify__alias--space-md);
+  margin-bottom: var(--colorify__stack--gap, var(--colorify__alias--space-md));
 }
