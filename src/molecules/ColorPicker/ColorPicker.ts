@@ -87,10 +87,8 @@ export class ColorPicker extends LitElement {
 
       this.dispatchEvent(new CustomEvent('set-new-color', eventOptions));
     } else {
-      console.error('err');
+      console.error('err', server);
     }
-
-    // add custom event to propage up
   }
 }
 
