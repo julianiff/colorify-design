@@ -1,11 +1,10 @@
+import '../../atoms/Stack/Stack';
 import '../../atoms/ColorGradient/ColorGradient';
 import '../../atoms/ColorTile/ColorTile';
 import '../../atoms/ColorContainer/ColorContainer';
 import {LitElement, html} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import style from './style.css';
-import {ColorModel} from '../../atoms/ColorTile/ColorTile';
-import {transformData, transformSingleEntry} from './lib/transform';
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 /**
@@ -23,57 +22,38 @@ export class ColorPicker extends LitElement {
   public colorifyBackendUrl: string = 'http://localhost:3000/colors';
 
   /**
-   * Internal state to display the colors
-   */
-  @state()
-  private colorTiles: ColorModel[] = [];
-
-  /**
    * preview Color from ColorPicker
    */
   @state()
   private previewColor?: string;
 
-  /**
-   * Get the inital dataset of colorTiles
-   */
-  firstUpdated() {
-    fetch(this.colorifyBackendUrl)
-      .then((item) => item.json())
-      .then((jsonReponse) => (this.colorTiles = transformData(jsonReponse)));
-  }
-
   render() {
-    return html`
-      ${this.renderColorPicker()}
-
-      <colorify-color-container class="color-container">
-        ${this.renderColorTiles()}
-      </colorify-color-container>
-    `;
+    return html` ${this.renderColorPicker()} `;
   }
 
   private renderColorPicker() {
     return html`
-      <colorify-color-gradient
-        hex=${ifDefined(this.previewColor)}
-      ></colorify-color-gradient>
+      <colorify-stack>
+        <colorify-color-gradient
+          hex=${ifDefined(this.previewColor)}
+        ></colorify-color-gradient>
 
-      <input
-        type="color"
-        id="head"
-        name="ColorPicker"
-        value="#e66465"
-        @input=${(e: any) => (this.previewColor = e.target.value)}
-      />
-      <label for="head">ColorPicker</label>
-      <!-- <div
+        <input
+          type="color"
+          id="head"
+          name="ColorPicker"
+          value="#e66465"
+          @input=${(e: any) => (this.previewColor = e.target.value)}
+        />
+        <label for="head">ColorPicker</label>
+        <!-- <div
         style="display: inline-block; width: 50px; height: 50px; background-color: ${this
-        .previewColor}"
+          .previewColor}"
         @click="${() => this.saveNewColor()}"
       >
         add color
       </div> -->
+      </colorify-stack>
     `;
   }
 
@@ -89,22 +69,7 @@ export class ColorPicker extends LitElement {
 
     const response = await (await fetch(url, options)).json();
 
-    if (!response.error) {
-      console.log(response);
-      this.colorTiles = [
-        transformSingleEntry(response.response),
-        ...this.colorTiles
-      ];
-    }
-  }
-
-  private renderColorTiles() {
-    return this.colorTiles.map(
-      (item) => html`<colorify-color-tile
-        name=${item.name}
-        hex=${item.hex}
-      ></colorify-color-tile>`
-    );
+    // add custom event to propage up
   }
 }
 

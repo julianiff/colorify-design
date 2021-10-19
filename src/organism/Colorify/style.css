@@ -1,0 +1,14 @@
+:host {
+  min-height: var(--colorify__color-tile--min-height, 20rem);
+}
+div {
+  background-color: var(--colorify__color-tile--background, grey);
+  min-width: var(--colorify__color-tile--min-width, 100%);
+  height: var(--colorify__color-tile--height, 100%);
+  scroll-snap-align: var(--colorify__color-tile--snap, start);
+  border-radius: var(--colorify__color-tile--border-radius, 3px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

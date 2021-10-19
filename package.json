@@ -6,7 +6,7 @@
   "module": "lib/index.js",
   "type": "module",
   "scripts": {
-    "serve": "MODE=dev concurrently \"web-dev-server --open dev/ --node-resolve --watch\" \"npm run watch\" \"tsc --noEmit\"",
+    "start": "MODE=dev concurrently \"web-dev-server --open dev/ --node-resolve --watch\" \"npm run watch\" \"tsc --noEmit\"",
     "build": "node .esbuild.js",
     "watch": "node .esbuild.watch.js",
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,0 +1,12 @@
+:root,
+:host {
+  --colorify__dimension--05: 0.5rem;
+  --colorify__dimension--10: 1rem;
+  --colorify__dimension--25: 2.5rem;
+  --colorify__dimension--50: 5rem;
+
+  --colorify__alias--space-xs: var(--colorify__dimension--05);
+  --colorify__alias--space-sm: var(--colorify__dimension--10);
+  --colorify__alias--space-md: var(--colorify__dimension--25);
+  --colorify__alias--space-lg: var(--colorify__dimension--50);
+}

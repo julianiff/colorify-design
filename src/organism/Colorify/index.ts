@@ -1,0 +1,1 @@
+export {Colorify} from './Colorify';
