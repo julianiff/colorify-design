@@ -1,6 +1,6 @@
-/* :host {
-  min-width: 20vw;
-} */
+:host {
+  min-height: 20rem;
+}
 div {
   display: inline-block;
   min-width: 100%;

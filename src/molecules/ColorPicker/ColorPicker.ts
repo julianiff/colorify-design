@@ -72,20 +72,24 @@ export class ColorPicker extends LitElement {
   }
 
   private async saveNewColor() {
-    const hex = this.previewColor?.replace('#', '%23');
-    const url = `http://localhost:3000/color/add?name=rot&hex=${hex}`;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({name: 'name', hex: this.previewColor})
+    };
+    const url = `http://localhost:3000/color/add`;
 
-    const response = await (await fetch(url)).json();
-    if (response.success) {
+    const response = await (await fetch(url, options)).json();
+
+    if (!response.error) {
       console.log(response);
       this.colorTiles = [
         transformSingleEntry(response.response),
         ...this.colorTiles
       ];
     }
-    // if(response.su)
-
-    //fetch(url).then((item) => console.log('saved!', item));
   }
 
   private renderColorTiles() {
