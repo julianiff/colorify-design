@@ -1,5 +1,4 @@
 :host {
-  overflow: hidden;
-  --colorify__color-container--max-height: calc(100vh - 15rem);
+  --colorify__color-container--max-height: 550px;
   --colorify__color-picker--height: 15rem;
 }

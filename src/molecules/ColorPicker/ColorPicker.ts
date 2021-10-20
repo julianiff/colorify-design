@@ -70,28 +70,17 @@ export class ColorPicker extends LitElement {
     `;
   }
 
+  /**
+   * Send Event to set new color
+   */
   private async saveNewColor() {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({name: this.name, hex: this.previewColor})
+    const eventOptions = {
+      detail: {entry: {name: this.name, hex: this.previewColor}},
+      bubbles: true,
+      composed: true
     };
-    const url = `http://localhost:3000/color/add`;
 
-    const server = await (await fetch(url, options)).json();
-    if (!server.error) {
-      const eventOptions = {
-        detail: {entry: server.response},
-        bubbles: true,
-        composed: true
-      };
-
-      this.dispatchEvent(new CustomEvent('set-new-color', eventOptions));
-    } else {
-      console.error('err', server);
-    }
+    this.dispatchEvent(new CustomEvent('set-new-color', eventOptions));
   }
 }
 

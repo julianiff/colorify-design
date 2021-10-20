@@ -17,9 +17,9 @@ export interface ColorModel {
 }
 
 /**
- * ColorTile Component
+ * Colorify Base App
+ * Manages internal state
  *
- * @slot - Slot of the element for the text
  */
 @customElement('colorify-app')
 export class Colorify extends LitElement {
@@ -29,7 +29,7 @@ export class Colorify extends LitElement {
    * Url to fetch Content
    */
   @property()
-  public colorifyBackendUrl: string = 'http://localhost:3000/colors';
+  public colorifyBackendUrl: string = 'http://localhost:3000';
 
   /**
    * Internal state to display the colors
@@ -41,7 +41,7 @@ export class Colorify extends LitElement {
    * Get the inital dataset of colorTiles
    */
   firstUpdated() {
-    fetch(this.colorifyBackendUrl)
+    fetch(`${this.colorifyBackendUrl}/colors`)
       .then((item) => item.json())
       .then((jsonReponse) => (this.colorTiles = transformData(jsonReponse)));
   }
@@ -49,12 +49,12 @@ export class Colorify extends LitElement {
   render() {
     return html`
       <colorify-color-picker
-        @set-new-color=${(e: any) => this.addNewColor(e)}
+        @set-new-color=${(e: CustomEvent) => this.addNewColor(e)}
       ></colorify-color-picker>
 
       <colorify-color-container
         class="color-container"
-        @tile-click-event=${(e: any) => this.removeColor(e)}
+        @tile-click-event=${(e: CustomEvent) => this.removeColor(e)}
       >
         ${this.renderColorTiles()}
       </colorify-color-container>
@@ -75,16 +75,40 @@ export class Colorify extends LitElement {
     );
   }
 
-  private addNewColor({detail: {entry}}: any) {
-    this.colorTiles = [...this.colorTiles, transformSingleEntry(entry)];
+  private async addNewColor({
+    detail: {
+      entry: {name, hex}
+    }
+  }: CustomEvent) {
+    const url = `${this.colorifyBackendUrl}/color/add`;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({name, hex})
+    };
+
+    const server = await (await fetch(url, options)).json();
+
+    if (!server.error) {
+      this.colorTiles = [
+        ...this.colorTiles,
+        transformSingleEntry(server.response)
+      ];
+    } else {
+      console.error('Error:', server.message);
+    }
   }
 
-  private async removeColor({detail: {entry}}: any) {
-    const url = `http://localhost:3000/color/${entry.id}/remove`;
+  private async removeColor({detail: {entry}}: CustomEvent) {
+    const url = `${this.colorifyBackendUrl}/color/${entry.id}/remove`;
 
     const server = await (await fetch(url)).json();
     if (!server.error) {
       this.colorTiles = this.colorTiles.filter((item) => item.id !== entry.id);
+    } else {
+      console.error('Error:', server.message);
     }
   }
 }

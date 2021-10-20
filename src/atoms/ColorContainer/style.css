@@ -4,9 +4,9 @@
   display: grid;
   grid-template-columns: repeat(4, 20rem);
   justify-content: center;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
-  max-height: var(--colorify__color-container--max-height);
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  /* max-height: var(--colorify__color-container--max-height); */
   flex-wrap: wrap;
   overflow-y: auto;
   scroll-snap-type: both mandatory;
