@@ -8,7 +8,7 @@ import style from './style.css';
 import {
   transformData,
   transformSingleEntry
-} from '../../molecules/ColorPicker/lib/transform';
+} from './lib/transform';
 
 export interface ColorModel {
   id: string;
@@ -18,7 +18,7 @@ export interface ColorModel {
 
 /**
  * Colorify Base App
- * Manages internal state
+ * Manages internal state and fetches data
  *
  */
 @customElement('colorify-app')
@@ -26,7 +26,7 @@ export class Colorify extends LitElement {
   static styles = [style];
 
   /**
-   * Url to fetch Content
+   * Base Url to backend API
    */
   @property()
   public colorifyBackendUrl: string = 'http://localhost:3000';
