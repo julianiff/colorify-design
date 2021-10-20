@@ -2,16 +2,15 @@
   /* border: 1px solid lightgray; */
   padding: 3rem;
   display: grid;
-  grid-template-columns: repeat(4, 20rem);
+  grid-template-columns: repeat(1, 1fr);
   justify-content: center;
-  grid-column-gap: 4rem;
+  grid-column-gap: 0rem;
   grid-row-gap: 4rem;
-  /* max-height: var(--colorify__color-container--max-height); */
+  max-height: 50vh;
   flex-wrap: wrap;
   overflow-y: auto;
   scroll-snap-type: both mandatory;
   scroll-padding: 1rem;
-  width: 100%;
 
   --colorify__color-tile--distance: var(
     --colorify-alias__shadow-distance--close
@@ -19,4 +18,13 @@
   --colorify__color-tile-hover--distance: var(
     --colorify-alias__shadow-distance--far
   );
+}
+
+@media screen and (min-width: 840px) {
+  :host {
+    max-height: none;
+    grid-template-columns: repeat(4, 20rem);
+    grid-column-gap: 4rem;
+    grid-row-gap: 4rem;
+  }
 }

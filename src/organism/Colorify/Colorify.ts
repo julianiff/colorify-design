@@ -44,6 +44,7 @@ export class Colorify extends LitElement {
 
   render() {
     return html`
+      <div class="head-space"></div>
       <colorify-color-picker
         @set-new-color=${(e: CustomEvent) => this.addNewColor(e)}
       ></colorify-color-picker>

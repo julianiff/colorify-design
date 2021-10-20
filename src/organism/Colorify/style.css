@@ -1,4 +1,8 @@
-:host {
+/* :host {
   --colorify__color-container--max-height: 550px;
   --colorify__color-picker--height: 15rem;
+} */
+
+.head-space {
+  margin-top: var(--colorify__alias--space-md);
 }

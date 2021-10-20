@@ -3,23 +3,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-:host([direction='row']) {
-  flex-direction: row;
+  width: 100%;
 }
 
 :host ::slotted(*) {
   margin-bottom: var(--colorify__stack--gap, var(--colorify__alias--space-md));
 }
 
-:host([direction='row']) ::slotted(*) {
-  margin-right: var(--colorify__stack--gap, var(--colorify__alias--space-md));
-}
-
-@media screen and (max-width: 840px) {
+@media screen and (min-width: 840px) {
   :host([direction='row']) {
-    flex-direction: column;
+    flex-direction: row;
   }
   :host([direction='row']) ::slotted(*) {
     margin-right: var(--colorify__stack--gap, var(--colorify__alias--space-md));
