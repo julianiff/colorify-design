@@ -1,7 +1,5 @@
-:host {
-  min-height: var(--colorify__color-tile--min-height, 15vh);
-}
 div {
+  min-height: var(--colorify__color-tile--min-height, 15rem);
   background-color: var(--colorify__color-tile--background, grey);
   min-width: var(--colorify__color-tile--min-width, 100%);
   height: var(--colorify__color-tile--height, 100%);

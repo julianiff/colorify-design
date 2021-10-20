@@ -1,6 +1,5 @@
 :host {
-  --colorify__gradient--height: 10vh;
-  --colorify__color-tile--min-height: var(--colorify__gradient--height);
+  --colorify__color-tile--min-height: 8rem;
   --colorify__color-tile--border-radius: 0;
 }
 
