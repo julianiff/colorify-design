@@ -5,17 +5,13 @@ import {LitElement, html} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {animate, flyAbove, fadeOut} from '@lit-labs/motion';
 import style from './style.css';
-import {
-  transformData,
-  transformSingleEntry
-} from './lib/transform';
+import {transformData, transformSingleEntry} from './lib/transform';
 
 export interface ColorModel {
   id: string;
   name: string;
   hex: string;
 }
-
 /**
  * Colorify Base App
  * Manages internal state and fetches data

@@ -14,13 +14,6 @@ import {ifDefined} from 'lit/directives/if-defined.js';
 @customElement('colorify-color-picker')
 export class ColorPicker extends LitElement {
   static styles = [style];
-
-  /**
-   * Url to fetch Content
-   */
-  @property()
-  public colorifyBackendUrl: string = 'http://localhost:3000/colors';
-
   /**
    * preview Color from ColorPicker
    */
