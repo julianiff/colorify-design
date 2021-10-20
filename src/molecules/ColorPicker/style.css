@@ -9,10 +9,6 @@
   --colorify__color-tile--cursor: auto;
 }
 
-.color-container {
-  max-width: 550px;
-}
-
 .search-input {
   border: none;
   border-bottom: 2px solid black;
@@ -24,4 +20,8 @@
 
 .search-color {
   border: none;
+}
+
+div {
+  width: 100%;
 }

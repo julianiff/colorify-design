@@ -11,6 +11,7 @@
   overflow-y: auto;
   scroll-snap-type: both mandatory;
   scroll-padding: 1rem;
+  width: 100%;
 
   --colorify__color-tile--distance: var(
     --colorify-alias__shadow-distance--close

@@ -32,34 +32,33 @@ export class ColorPicker extends LitElement {
 
   private renderColorPicker() {
     return html`
-      <colorify-stack>
-        <colorify-stack
-          direction="row"
-          style="height: var(--colorify__color-picker--height)"
-        >
-          <colorify-color-gradient
-            hex=${ifDefined(this.previewColor)}
-          ></colorify-color-gradient>
-          <input
-            type="color"
-            class="search-color"
-            name="ColorPicker"
-            value="#000000"
-            @input=${(e: any) => (this.previewColor = e.target.value)}
-          />
-          <input
-            type="search"
-            class="search-input"
-            value=${ifDefined(this.name)}
-            @input=${(e: any) => (this.name = e.target.value)}
-          />
-          <input
-            type="submit"
-            value="save"
-            @click="${() => this.saveNewColor()}"
-          />
+      <div>
+        <colorify-stack>
+          <colorify-stack direction="row">
+            <colorify-color-gradient
+              hex=${ifDefined(this.previewColor)}
+            ></colorify-color-gradient>
+            <input
+              type="color"
+              class="search-color"
+              name="ColorPicker"
+              value="#000000"
+              @input=${(e: any) => (this.previewColor = e.target.value)}
+            />
+            <input
+              type="search"
+              class="search-input"
+              value=${ifDefined(this.name)}
+              @input=${(e: any) => (this.name = e.target.value)}
+            />
+            <input
+              type="submit"
+              value="save"
+              @click="${() => this.saveNewColor()}"
+            />
+          </colorify-stack>
         </colorify-stack>
-      </colorify-stack>
+      </div>
     `;
   }
 

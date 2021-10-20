@@ -16,3 +16,12 @@
 :host([direction='row']) ::slotted(*) {
   margin-right: var(--colorify__stack--gap, var(--colorify__alias--space-md));
 }
+
+@media screen and (max-width: 840px) {
+  :host([direction='row']) {
+    flex-direction: column;
+  }
+  :host([direction='row']) ::slotted(*) {
+    margin-right: var(--colorify__stack--gap, var(--colorify__alias--space-md));
+  }
+}
