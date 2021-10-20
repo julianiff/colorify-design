@@ -6,7 +6,7 @@
   justify-content: center;
   grid-column-gap: 0rem;
   grid-row-gap: 4rem;
-  max-height: 50vh;
+  /* max-height: 50vh; */
   flex-wrap: wrap;
   overflow-y: auto;
   scroll-snap-type: both mandatory;
