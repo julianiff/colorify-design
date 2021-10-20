@@ -7,3 +7,6 @@
 .prettierrc.json
 tsconfig.json
 yarn.lock
+.esbuild.watch.js
+/dev
+.github
