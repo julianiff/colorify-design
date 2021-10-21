@@ -16,3 +16,33 @@ h1 {
   padding: var(--colorify__alias--space-lg) 0;
   background-color: var(--colorify-alias__color--primary);
 }
+
+.clipboard {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  opacity: 0;
+  transition: opacity 2s ease-in;
+
+  font-size: var(--colorify-alias__font-large--font-size);
+  line-height: 1.5;
+  text-align: center;
+  pointer-events: none;
+}
+
+.clipboard span {
+  font-size: var(--colorify-alias__font-small--font-size);
+}
+
+.clipboard-show {
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
+@media screen and (min-width: 840px) {
+  .clipboard {
+    width: 60vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

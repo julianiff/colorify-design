@@ -1,6 +1,7 @@
 :host {
   --colorify__color-tile--min-height: 10rem;
   --colorify__color-tile--border-radius: 0;
+  --colorify-tile__hover--opacity: 0;
 }
 
 .gradient-container {

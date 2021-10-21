@@ -6,6 +6,9 @@ import {customElement, property, state} from 'lit/decorators.js';
 import {animate, flyAbove, fadeOut} from '@lit-labs/motion';
 import style from './style.css';
 import {transformData, transformSingleEntry} from './lib/transform';
+import {ifDefined} from 'lit/directives/if-defined.js';
+import {classMap} from 'lit/directives/class-map.js';
+import {styleMap} from 'lit-html/directives/style-map.js';
 
 export interface ColorModel {
   id: string;
@@ -34,6 +37,15 @@ export class Colorify extends LitElement {
   private colorTiles: ColorModel[] = [];
 
   /**
+   * Internal state to display the colors
+   */
+  @state()
+  private clipboardEntry?: string = 'white';
+
+  @state()
+  private showModal: boolean = false;
+
+  /**
    * Get the inital dataset of colorTiles
    */
   firstUpdated() {
@@ -43,6 +55,7 @@ export class Colorify extends LitElement {
   }
 
   render() {
+    const clipboardClass = {'clipboard-show': this.showModal};
     return html`
       <colorify-stack class="container">
         <h1>Colorify Moodboard</h1>
@@ -52,11 +65,36 @@ export class Colorify extends LitElement {
       ></colorify-color-picker>
 
       <colorify-color-container
-        @tile-click-event=${(e: CustomEvent) => this.removeColor(e)}
+        @short-tile-click-event=${(e: CustomEvent) => this.copyToClipboard(e)}
+        @long-tile-click-event=${(e: CustomEvent) => this.removeColor(e)}
       >
         ${this.renderColorTiles()}
       </colorify-color-container>
+
+      <div
+        style="${styleMap({'background-color': this.clipboardEntry})}"
+        class="clipboard ${classMap(clipboardClass)}"
+      >
+        Added "${ifDefined(this.clipboardEntry)}" to Clipboard
+        <span>long press to delete</span>
+      </div>
     `;
+  }
+
+  private copyToClipboard({detail: {entry}}: CustomEvent) {
+    navigator.clipboard.writeText(entry.hex).then(
+      () => {
+        console.log('Added to Clipboard');
+        this.clipboardEntry = entry.hex;
+        this.showModal = true;
+        console.log(this.showModal);
+        setTimeout(() => (this.showModal = false), 150);
+      },
+      () => {
+        console.log('Could not add to Clipboard');
+        /* clipboard write failed */
+      }
+    );
   }
 
   private renderColorTiles() {

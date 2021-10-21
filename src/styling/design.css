@@ -12,6 +12,8 @@
   --colorify__alias--space-md: var(--colorify__dimension--25);
   --colorify__alias--space-lg: var(--colorify__dimension--50);
 
+  --colorify__alias--transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
   /* Coloration */
   --colorify-alias__color--primary: #8fc671;
   --colorify-alias__color--secondary: #59aed9;

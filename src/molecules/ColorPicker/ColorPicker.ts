@@ -48,7 +48,8 @@ export class ColorPicker extends LitElement {
     return html`
       <colorify-stack
         class="container"
-        @tile-click-event=${(e: CustomEvent) => this.saveNewColor(e)}
+        @short-tile-click-event=${(e: CustomEvent) => this.saveNewColor(e)}
+        @long-tile-click-event=${(e: CustomEvent) => this.saveNewColor(e)}
       >
         <colorify-stack direction="row" mobileGap="slim">
           <div><p>${this.colorPickerLabel}</p></div>
