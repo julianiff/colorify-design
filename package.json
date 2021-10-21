@@ -9,7 +9,9 @@
     "start": "MODE=dev concurrently \"web-dev-server --open dev/ --node-resolve --watch\" \"npm run watch\" \"tsc --noEmit\"",
     "build": "node .esbuild.js",
     "watch": "node .esbuild.watch.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "concurrently \"npm run build\" \"web-test-runner src/**/*.test.ts --node-resolve --esbuild-target auto\"",
+    "test:watch": "web-test-runner src/**/*.test.ts --node-resolve --esbuild-target auto --watch & npm run watch",
+    "test:watch:single": "web-test-runner src/**/*.test.ts --node-resolve --esbuild-target auto --watch",
     "analyze": "wca analyze \"src/**/*.ts\" --outFile custom-elements.json",
     "npm:publish": "npm run build && npm publish",
     "ci": "npm install && npm run build"
@@ -28,12 +30,15 @@
     "lit": "^2.0.2"
   },
   "devDependencies": {
-    "@types/three": "^0.133.0",
+    "@esm-bundle/chai": "^4.3.4-fix.0",
     "@lit-labs/motion": "^1.0.0-rc.2",
     "@types/jest": "^26.0.24",
+    "@types/three": "^0.133.0",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "@web/dev-server": "^0.1.18",
+    "@web/dev-server-esbuild": "^0.2.14",
+    "@web/test-runner": "^0.13.20",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "chalk": "^2.4.2",
     "concurrently": "^6.2.0",

@@ -3,12 +3,6 @@ import {customElement, property} from 'lit/decorators.js';
 import style from './style.css';
 import {styleMap} from 'lit-html/directives/style-map.js';
 
-export interface ColorModel {
-  id: string;
-  name: string;
-  hex: string;
-}
-
 /**
  * ColorTile Component
  *

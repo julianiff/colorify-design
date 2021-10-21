@@ -1,6 +1,6 @@
 import {LitElement, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import style from './style.css';
+// import style from './style.css';
 
 /**
  * Stack Component to align items
@@ -9,7 +9,7 @@ import style from './style.css';
  */
 @customElement('colorify-stack')
 export class Stack extends LitElement {
-  static styles = [style];
+  // static styles = [style];
 
   @property({reflect: true})
   public direction?: string;

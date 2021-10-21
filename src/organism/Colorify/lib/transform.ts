@@ -1,4 +1,4 @@
-import {ColorModel} from '../../../atoms/ColorTile/ColorTile';
+import {ColorModel} from '../Colorify';
 
 interface serverTileInformation {
   hex: string;
