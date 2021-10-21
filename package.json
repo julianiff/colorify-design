@@ -27,10 +27,10 @@
   },
   "homepage": "https://github.com/julianiff/colorify-design#readme",
   "dependencies": {
-    "@open-wc/testing": "^3.0.1",
     "lit": "^2.0.2"
   },
   "devDependencies": {
+    "@open-wc/testing": "^3.0.1",
     "@esm-bundle/chai": "^4.3.4-fix.0",
     "@lit-labs/motion": "^1.0.0-rc.2",
     "@types/jest": "^26.0.24",
