@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/julianiff/colorify-design#readme",
   "dependencies": {
+    "@open-wc/testing": "^3.0.1",
     "lit": "^2.0.2"
   },
   "devDependencies": {
