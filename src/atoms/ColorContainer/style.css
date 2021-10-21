@@ -1,16 +1,11 @@
 :host {
-  /* border: 1px solid lightgray; */
   padding: 3rem;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  grid-column-gap: 0rem;
-  grid-row-gap: 4rem;
-  /* max-height: 50vh; */
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
   flex-wrap: wrap;
-  overflow-y: auto;
-  scroll-snap-type: both mandatory;
-  scroll-padding: 1rem;
 
   --colorify__color-tile--distance: var(
     --colorify-alias__shadow-distance--close
@@ -23,7 +18,7 @@
 @media screen and (min-width: 840px) {
   :host {
     max-height: none;
-    grid-template-columns: repeat(4, 20rem);
+    grid-template-columns: repeat(4, min(20rem, 20vw));
     grid-column-gap: 4rem;
     grid-row-gap: 4rem;
   }

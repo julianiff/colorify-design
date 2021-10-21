@@ -1,10 +1,23 @@
+p {
+  font-size: var(--colorify-alias__font-medium--font-size);
+  line-height: var(--colorify-alias__font-medium--line-height);
+}
+
+span {
+  font-size: var(--colorify-alias__font-small--font-size);
+  line-height: var(--colorify-alias__font-small--line-height);
+}
+
 div {
   min-height: var(--colorify__color-tile--min-height, 15rem);
   background-color: var(--colorify__color-tile--background, grey);
   min-width: var(--colorify__color-tile--min-width, 100%);
   height: var(--colorify__color-tile--height, 100%);
   scroll-snap-align: var(--colorify__color-tile--snap, start);
-  border-radius: var(--colorify__color-tile--border-radius, 3px);
+  border-radius: var(
+    --colorify__color-tile--border-radius,
+    var(--colorify__border--radius)
+  );
   position: relative;
   display: flex;
   justify-content: center;
@@ -24,7 +37,10 @@ div::after {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: var(--colorify__color-tile--border-radius, 3px);
+  border-radius: var(
+    --colorify__color-tile--border-radius,
+    var(--colorify__border--radius)
+  );
   z-index: -1;
 
   opacity: 0;

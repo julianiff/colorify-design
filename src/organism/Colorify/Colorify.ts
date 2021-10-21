@@ -44,13 +44,14 @@ export class Colorify extends LitElement {
 
   render() {
     return html`
-      <div class="head-space"></div>
+      <colorify-stack class="container">
+        <h1>Colorify Moodboard</h1>
+      </colorify-stack>
       <colorify-color-picker
         @set-new-color=${(e: CustomEvent) => this.addNewColor(e)}
       ></colorify-color-picker>
 
       <colorify-color-container
-        class="color-container"
         @tile-click-event=${(e: CustomEvent) => this.removeColor(e)}
       >
         ${this.renderColorTiles()}

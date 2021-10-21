@@ -45,13 +45,13 @@ export class ColorTile extends LitElement {
       style=${styleMap(backgroundColor)}
       @click=${() => this.dispatchClickEvent()}
     >
-      ${this.renderName()}${this.hex}
+      <p>${this.renderName()}<span>${this.hex}</span></p>
     </div>`;
   }
 
   private dispatchClickEvent() {
     const eventOptions = {
-      detail: {entry: {id: this.colorId}},
+      detail: {entry: {id: this.colorId, name: this.name, hex: this.hex}},
       bubbles: true,
       composed: true
     };
@@ -60,7 +60,7 @@ export class ColorTile extends LitElement {
   }
 
   private renderName() {
-    return html` ${!!this.name ? `${this.name} - ` : nothing} `;
+    return html` ${!!this.name ? `${this.name} / ` : nothing} `;
   }
 }
 

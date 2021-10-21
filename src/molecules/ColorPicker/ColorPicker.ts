@@ -26,35 +26,58 @@ export class ColorPicker extends LitElement {
   @state()
   private name?: string;
 
+  /**
+   * Label Colorname
+   * @returns
+   */
+  @property()
+  public colorPickerLabel: string = 'Color & Name';
+
+  /**
+   * Label Colorname
+   * @returns
+   */
+  @property()
+  public colorNameLabel: string = 'Mood up';
+
   render() {
     return html` ${this.renderColorPicker()} `;
   }
 
   private renderColorPicker() {
     return html`
-      <colorify-stack>
-        <colorify-stack direction="row">
-          <colorify-color-gradient
-            hex=${ifDefined(this.previewColor)}
-          ></colorify-color-gradient>
-          <input
-            type="color"
-            class="search-color"
-            name="ColorPicker"
-            value="#000000"
-            @input=${(e: any) => (this.previewColor = e.target.value)}
-          />
-          <input
-            type="search"
-            class="search-input"
-            value=${ifDefined(this.name)}
-            @input=${(e: any) => (this.name = e.target.value)}
-          />
-          <input
-            type="submit"
-            value="save"
-            @click="${() => this.saveNewColor()}"
-          />
+      <colorify-stack
+        class="container"
+        @tile-click-event=${(e: CustomEvent) => this.saveNewColor(e)}
+      >
+        <colorify-stack direction="row" mobileGap="slim">
+          <div><p>${this.colorPickerLabel}</p></div>
+          <div>
+            <input
+              type="color"
+              class="search-color"
+              name="ColorPicker"
+              value="#000000"
+              @input=${(e: any) => (this.previewColor = e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="search"
+              class="search-input"
+              value=${ifDefined(this.name)}
+              @input=${(e: any) => (this.name = e.target.value)}
+            />
+          </div>
+        </colorify-stack>
+
+        <colorify-stack direction="row" mobileGap="slim">
+          <div><p>${this.colorNameLabel}</p></div>
+          <div>
+            <colorify-color-gradient
+              hex=${ifDefined(this.previewColor)}
+            ></colorify-color-gradient>
+          </div>
         </colorify-stack>
       </colorify-stack>
     `;
@@ -63,9 +86,10 @@ export class ColorPicker extends LitElement {
   /**
    * Send Event to set new color
    */
-  private async saveNewColor() {
+  private async saveNewColor({detail: {entry}}: CustomEvent) {
+    const {hex} = entry;
     const eventOptions = {
-      detail: {entry: {name: this.name, hex: this.previewColor}},
+      detail: {entry: {name: this.name, hex: hex}},
       bubbles: true,
       composed: true
     };

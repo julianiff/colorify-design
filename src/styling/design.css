@@ -2,6 +2,8 @@
 :host {
   --colorify__dimension--05: 0.5rem;
   --colorify__dimension--10: 1rem;
+  --colorify__dimension--15: 1.5rem;
+  --colorify__dimension--20: 2rem;
   --colorify__dimension--25: 2.5rem;
   --colorify__dimension--50: 5rem;
 
@@ -9,6 +11,33 @@
   --colorify__alias--space-sm: var(--colorify__dimension--10);
   --colorify__alias--space-md: var(--colorify__dimension--25);
   --colorify__alias--space-lg: var(--colorify__dimension--50);
+
+  /* Coloration */
+  --colorify-alias__color--primary: #8fc671;
+  --colorify-alias__color--secondary: #59aed9;
+  --colorify-alias__color--base: #62c6af;
+
+  --colorify__border--radius: 1rem;
+
+  /* Line height */
+  --colorify-alias__line-height--none: 1;
+  --colorify-alias__line-height--default: 1.5;
+
+  /* Font Design */
+  --colorify-alias__font-large--font-size: var(--colorify__dimension--50);
+  --colorify-alias__font-large--line-height: var(
+    --colorify-alias__line-height--none
+  );
+
+  --colorify-alias__font-medium--font-size: var(--colorify__dimension--20);
+  --colorify-alias__font-medium--line-height: var(
+    --colorify-alias__line-height--none
+  );
+
+  --colorify-alias__font-small--font-size: var(--colorify__dimension--15);
+  --colorify-alias__font-small--line-height: var(
+    --colorify-alias__line-height--default
+  );
 
   /* Perceived Distance Values */
   --colorify-alias__shadow-distance--close: 0px 0px 2.2px rgba(0, 0, 0, 0.02),
@@ -25,4 +54,8 @@
     0px 1.2px 5.3px rgba(0, 0, 0, 0.028), 0px 7.1px 10px rgba(0, 0, 0, 0.035),
     0px 19px 17.9px rgba(0, 0, 0, 0.042), 0px 42.1px 33.4px rgba(0, 0, 0, 0.05),
     0px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+html {
+  font-family: 'Bebas Neue', cursive;
 }

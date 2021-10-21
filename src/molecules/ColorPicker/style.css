@@ -6,10 +6,24 @@
     --colorify-alias__shadow-distance--close
   );
 
-  --colorify__color-tile--cursor: auto;
+  --colorify__color-tile--cursor: copy;
+  background-color: black;
 }
 
-.search-input {
+.container {
+  padding: var(--colorify__alias--space-lg) 0;
+  background-color: var(--colorify-alias__color--secondary);
+}
+
+p,
+input {
+  font-size: var(--colorify-alias__font-medium--font-size);
+  line-height: 1.5;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+input {
   border: none;
   border-bottom: 2px solid black;
 }

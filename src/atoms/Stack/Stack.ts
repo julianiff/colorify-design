@@ -14,6 +14,9 @@ export class Stack extends LitElement {
   @property({reflect: true})
   public direction?: string;
 
+  @property({reflect: true})
+  public mobileGap?: string;
+
   render() {
     return html`<slot></slot>`;
   }

@@ -7,7 +7,14 @@
 }
 
 :host ::slotted(*) {
-  margin-bottom: var(--colorify__stack--gap, var(--colorify__alias--space-md));
+  margin-bottom: var(
+    --colorify-stack__mobile-gap--slim,
+    var(--colorify__stack--gap, var(--colorify__alias--space-md))
+  );
+}
+
+:host([mobileGap='slim']) ::slotted(*) {
+  --colorify-stack__mobile-gap--slim: var(--colorify__alias--space-sm);
 }
 
 @media screen and (min-width: 840px) {
@@ -16,5 +23,9 @@
   }
   :host([direction='row']) ::slotted(*) {
     margin-right: var(--colorify__stack--gap, var(--colorify__alias--space-md));
+    --colorify-stack__margin-bottom: var(--colorify__stack--gap, 0);
+  }
+  :host {
+    --colorify-stack__mobile-gap--slim: initial;
   }
 }

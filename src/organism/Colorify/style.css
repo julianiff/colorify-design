@@ -6,3 +6,13 @@
 .head-space {
   margin-top: var(--colorify__alias--space-md);
 }
+
+h1 {
+  font-size: var(--colorify-alias__font-large--font-size);
+  line-height: var(--colorify-alias__font-large--line-height);
+}
+
+.container {
+  padding: var(--colorify__alias--space-lg) 0;
+  background-color: var(--colorify-alias__color--primary);
+}
